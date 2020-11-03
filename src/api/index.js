@@ -6,4 +6,12 @@ export const fetchData = query => {
         method: 'get',
         params: query
     });
-};
+}
+
+export function login (loginForm) {
+    return request({
+        url: '/auth/oauth/token',
+        method: 'post',
+        data: loginForm
+    })
+}

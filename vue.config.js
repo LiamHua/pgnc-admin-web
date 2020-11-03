@@ -4,12 +4,9 @@ module.exports = {
     productionSourceMap: false,
     // devServer: {
     //     proxy: {
-    //         '/api':{
-    //             target:'http://jsonplaceholder.typicode.com',
-    //             changeOrigin:true,
-    //             pathRewrite:{
-    //                 '/api':''
-    //             }
+    //         '/':{
+    //             target:'http://localhost:8008/',
+    //             changeOrigin:true
     //         }
     //     }
     // }

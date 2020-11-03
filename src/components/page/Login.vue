@@ -28,12 +28,18 @@
 </template>
 
 <script>
+import { login } from '@/api/index.js'
+
 export default {
     data: function() {
         return {
             param: {
-                username: 'admin',
-                password: '123123',
+                username: 'huazai',
+                password: '123456',
+                grant_type: 'password',
+                client_id: 'pgnc',
+                client_secret: 'pgnc',
+                scope: 'all'
             },
             rules: {
                 username: [{ required: true, message: '请输入用户名', trigger: 'blur' }],
@@ -42,12 +48,13 @@ export default {
         };
     },
     methods: {
-        submitForm() {
-            this.$refs.login.validate(valid => {
+         submitForm() {
+            this.$refs.login.validate(async valid => {
                 if (valid) {
-                    this.$message.success('登录成功');
-                    localStorage.setItem('ms_username', this.param.username);
-                    this.$router.push('/');
+                    let res = await login(this.param)
+                    // this.$message.success('登录成功');
+                    // localStorage.setItem('ms_username', this.param.username);
+                    // this.$router.push('/');
                 } else {
                     this.$message.error('请输入账号和密码');
                     console.log('error submit!!');
